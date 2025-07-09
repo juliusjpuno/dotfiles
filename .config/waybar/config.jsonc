@@ -30,7 +30,16 @@
     "cpu": {
         "interval": 10,
         "format": " {usage}%",
-        "on-click": "alacritty -e btop",
+    },
+
+    "memory": {
+        "interval": 10,
+        "format": " {}%",
+    },
+
+    "disk": {
+        "interval": 10,
+        "format": " {percentage_used}%",
     },
 
     "battery": {
@@ -45,21 +54,9 @@
         "format-critical": " {capacity}%",
     },
 
-    "memory": {
-        "interval": 10,
-        "format": " {}%",
-        "on-click": "alacritty -e btop",
-    },
-
-    "disk": {
-        "interval": 10,
-        "format": " {percentage_used}%",
-        "on-click": "alacritty -e btop",
-    },
-
     "network": {
         "format-icons": {
-            "default": "",
+            "default": "",
             "wifi": "",
         },
         "format": "{icon} {ifname} {ipaddr}/{cidr}",
@@ -99,11 +96,11 @@
         "format-icons": {
             "notification": "",
             "none": "",
-            "dnd-notification": "",
+            "dnd-notification": "",
             "dnd-none": "",
             "inhibited-notification": "",
             "inhibited-none": "",
-            "dnd-inhibited-notification": "",
+            "dnd-inhibited-notification": "",
             "dnd-inhibited-none": "",
         },
         "return-type": "json",
@@ -128,8 +125,8 @@
         },
         "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
         "on-click-right": "pavucontrol",
-        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -1%",
-        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +1%",
+        "on-scroll-down": "pactl set-sink-volume @DEFAULT_SINK@ -5%",
+        "on-scroll-up": "pactl set-sink-volume @DEFAULT_SINK@ +5%",
     },
 
     "pulseaudio#microphone": {
@@ -138,7 +135,7 @@
         "format-source-muted": " Muted",
         "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-click-right": "pavucontrol",
-        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -1%",
-        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +1%",
+        "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%",
+        "on-scroll-up": "pactl set-source-volume @DEFAULT_SOURCE@ +5%",
     },
 }
