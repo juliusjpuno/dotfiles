@@ -1,9 +1,12 @@
 [user]
 	name = junji
 	email = julius.puno@everymatrix.com
+	; signingkey = mxaddict@kryptic.sh
 [color]
 	ui = true
 [core]
 	excludesfile = ~/.gitignore
 [pull]
 	rebase = false
+[commit]
+	; gpgsign = true

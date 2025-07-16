@@ -6,7 +6,7 @@
     "passthrough": false,
     "gtk-layer-shell": true,
     "height": 50,
-    "modules-left": ["cpu", "memory", "disk", "battery", "network"],
+    "modules-left": ["custom/power", "battery", "network", "bluetooth"],
     "modules-center": ["hyprland/workspaces"],
     "modules-right": [
         "tray",
@@ -17,7 +17,6 @@
     ],
 
     "hyprland/workspaces": {
-        "disable-scroll": true,
         "all-outputs": true,
         "format": "{}",
     },
@@ -28,23 +27,34 @@
     },
 
     "cpu": {
-        "interval": 10,
         "format": " {usage}%",
     },
 
     "memory": {
-        "interval": 10,
         "format": " {}%",
     },
 
     "disk": {
-        "interval": 10,
         "format": " {percentage_used}%",
     },
 
+    "bluetooth": {
+        "format-icons": {
+            "default": "",
+            "on": "",
+        },
+        "tooltip-format": "Bluetooth {status}",
+        "format": "{icon}",
+        "format-on": "{icon}",
+        "on-click": "blueman-manager",
+    },
+
     "battery": {
-        "format": "{icon} {capacity}%",
+        "format": "{icon}",
+        "format-charging": "",
+        "format-plugged": "",
         "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{capacity}% {power}W {timeTo}",
         "states": {
             "warning": 30,
             "critical": 15,
@@ -53,14 +63,15 @@
 
     "network": {
         "format-icons": {
+            "disconnected": "",
             "default": "",
             "wifi": "",
         },
-        "format": "{icon} {ifname} {ipaddr}/{cidr}",
-        "format-wifi": "{icon} {ifname} {ipaddr}/{cidr} {essid} ({signalStrength}%)",
-        "format-disconnected": "{icon} YOU IN THE WOODS?",
-        "max-length": 50,
-        "interval": 10,
+        "format": "{icon}",
+        "tooltip-format": "{ifname} {ipaddr}/{cidr}",
+        "tooltip-format-wifi": "{ifname} {ipaddr}/{cidr} {essid} ({signalStrength}%)",
+        "tooltip-format-disconnected": "YOU IN THE WOODS?",
+        "on-click": ".menu-wifi",
     },
 
     "clock": {
@@ -81,10 +92,16 @@
             },
         },
         "actions": {
-            "on-click-right": "mode",
+            "on-click": "mode",
             "on-scroll-up": "shift_up",
             "on-scroll-down": "shift_down",
         },
+    },
+
+    "custom/power": {
+        "tooltip-format": "Power Button",
+        "format": "",
+        "on-click": ".menu-power",
     },
 
     "custom/notification": {
@@ -110,7 +127,7 @@
 
     "pulseaudio": {
         "format": "{icon} {volume}%",
-        "format-muted": " Muted",
+        "format-muted": " ",
         "format-icons": {
             "headphone": "",
             "hands-free": "",
@@ -129,7 +146,7 @@
     "pulseaudio#microphone": {
         "format": "{format_source}",
         "format-source": " {volume}%",
-        "format-source-muted": " Muted",
+        "format-source-muted": "",
         "on-click": "pactl set-source-mute @DEFAULT_SOURCE@ toggle",
         "on-click-right": "pavucontrol",
         "on-scroll-down": "pactl set-source-volume @DEFAULT_SOURCE@ -5%",
