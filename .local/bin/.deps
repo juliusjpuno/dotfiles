@@ -11,14 +11,17 @@ if command -v pacman >/dev/null; then
         cd /tmp/paru || exit
         makepkg -si
         cd "$pwd" || exit
-        rm -rf /tmp/paru
     fi
 
+    sudo rm /etc/ly/config.ini
+    sudo rm /usr/lib/systemd/system/ly.service
+
     paru -S --needed \
+        adw-gtk-theme \
         alacritty \
         alsa-firmware \
         alsa-utils \
-        adw-gtk-theme \
+        avahi \
         bat \
         bear \
         bind \
@@ -30,6 +33,7 @@ if command -v pacman >/dev/null; then
         btop \
         chromium \
         cronie \
+        curl \
         duf \
         dysk \
         ethtool \
@@ -38,6 +42,7 @@ if command -v pacman >/dev/null; then
         fd \
         firefox \
         fish \
+        fprintd \
         fzf \
         git \
         gnu-free-fonts \
@@ -52,6 +57,7 @@ if command -v pacman >/dev/null; then
         hyprlock \
         hyprpaper \
         hyprpicker \
+        hyprpolkitagent \
         kanata \
         kooha \
         lazygit \
@@ -61,6 +67,7 @@ if command -v pacman >/dev/null; then
         nautilus \
         neovim \
         networkmanager \
+        nmap \
         nodejs \
         noto-fonts-cjk \
         noto-fonts-emoji \
@@ -88,6 +95,7 @@ if command -v pacman >/dev/null; then
         starship \
         stow \
         swaync \
+        swayosd \
         tealdeer \
         terminus-font \
         thunderbird \
@@ -103,10 +111,12 @@ if command -v pacman >/dev/null; then
         ufw \
         unzip \
         waybar \
+        wget \
         wireless-regdb \
         wireplumber \
         wl-clipboard \
         xdg-desktop-portal-hyprland \
+        zerotier-one \
         zoxide
 
     sudo cp "$HOME/.files/.root/etc/kanata.kbd" /etc/kanata.kbd
@@ -132,10 +142,13 @@ if command -v pacman >/dev/null; then
     sudo systemctl enable NetworkManager-dispatcher
     sudo systemctl enable ufw
     sudo systemctl enable tlp
+    sudo systemctl enable avahi-daemon
 
     sudo ufw allow ssh
-    sudo ufw allow proto udp from any to any port 27031:27036
-    sudo ufw allow proto tcp from any to any port 27040
+    sudo ufw allow mdns
+    sudo ufw allow 9993/udp                                   # zerotier port
+    sudo ufw allow proto udp from any to any port 27031:27036 # steam
+    sudo ufw allow proto tcp from any to any port 27040       # steam
 
     sudo ufw enable
     sudo ufw status
