@@ -1,7 +1,7 @@
 [user]
 	name = junji
-	email = julius.puno@everymatrix.com
-	; signingkey = mxaddict@kryptic.sh
+	email = juliusj.puno@gmail.com
+	signingkey = juliusj.puno@gmail.com
 [color]
 	ui = true
 [core]
@@ -9,6 +9,6 @@
 [pull]
 	rebase = false
 [commit]
-	; gpgsign = true
+	gpgsign = true
 [push]
 	autoSetupRemote = true
