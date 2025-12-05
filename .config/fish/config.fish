@@ -198,6 +198,16 @@ function vim
     nvim $argv
 end
 
+# Update my fork of mxaddict's repo
+function spleen
+    pushd .files
+    git fetch --all
+    git merge origin/main --no-edit
+    git merge fork/main --no-edit
+    gg
+    popd
+end
+
 # TokyoNight Color Palette
 set -l foreground c0caf5
 set -l selection 283457
