@@ -5,6 +5,15 @@ TOTAL_WINDOWS=3
 PANES_PER_WINDOW=8
 START_INDEX=1
 
+if tmux has-session -t "$SESSION" 2>/dev/null; then
+    tmux new-session -d -s "$SESSION"
+    echo "TMUX session '$SESSION' created and command started."
+else
+    echo "TMUX session '$SESSION' already exists."
+fi
+
+tmux send-keys :tmux-restore C-m
+
 declare -a SSH_TARGETS=(
     # --- WINDOW 1 (Panes 1-8) ---
     "ssh -i ~/.ssh/deepci-main-kp -t root@deep-scraper-25 'tmux a -t crawly'" # Window 1, Pane 1
