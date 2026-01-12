@@ -41,6 +41,7 @@ if command -v pacman >/dev/null; then
         firefox \
         fish \
         fprintd \
+        fwupd \
         fzf \
         git \
         gnu-free-fonts \
@@ -56,10 +57,12 @@ if command -v pacman >/dev/null; then
         hyprpaper \
         hyprpicker \
         hyprpolkitagent \
+        hyprqt6engine \
         kanata \
         kooha \
         lazygit \
         libadwaita \
+        ly \
         man-db \
         nautilus \
         neovim \
@@ -82,10 +85,8 @@ if command -v pacman >/dev/null; then
         python-tldextract \
         qalculate-qt \
         qt5-wayland \
-        qt5ct \
         qt6-wayland \
         qt6-webengine \
-        qt6ct \
         qutebrowser \
         reflector \
         ripgrep \
@@ -117,6 +118,7 @@ if command -v pacman >/dev/null; then
         wireplumber \
         wl-clipboard \
         woff2-font-awesome \
+        xdg-desktop-portal-gtk \
         xdg-desktop-portal-hyprland \
         zerotier-one \
         zoxide
