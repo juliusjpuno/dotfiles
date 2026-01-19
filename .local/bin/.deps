@@ -18,6 +18,7 @@ if command -v pacman >/dev/null; then
         alacritty \
         alsa-firmware \
         alsa-utils \
+        ardour \
         avahi \
         bat \
         bear \
@@ -29,7 +30,10 @@ if command -v pacman >/dev/null; then
         brightnessctl \
         btop \
         chromium \
+        cmatrix \
         cronie \
+        cups \
+        cups-pdf \
         curl \
         discord \
         duf \
@@ -43,9 +47,11 @@ if command -v pacman >/dev/null; then
         fprintd \
         fwupd \
         fzf \
+        ghostscript \
         git \
         gnu-free-fonts \
         grimblast-git \
+        gsfonts \
         gst-libav \
         gst-plugins-bad \
         gst-plugins-base \
@@ -58,12 +64,14 @@ if command -v pacman >/dev/null; then
         hyprpicker \
         hyprpolkitagent \
         hyprqt6engine \
+        imv \
         kanata \
         kooha \
         lazygit \
         libadwaita \
         ly \
         man-db \
+        mpv \
         nautilus \
         neovim \
         networkmanager \
@@ -72,6 +80,7 @@ if command -v pacman >/dev/null; then
         noto-fonts-cjk \
         noto-fonts-emoji \
         npm \
+        nss-mdns \
         nwg-displays \
         nwg-look \
         papirus-icon-theme \
@@ -91,8 +100,10 @@ if command -v pacman >/dev/null; then
         reflector \
         ripgrep \
         rofi \
+        rsync \
         rustup \
         sof-firmware \
+        speedtest-cli \
         spotify-launcher \
         starship \
         stow \
@@ -120,6 +131,7 @@ if command -v pacman >/dev/null; then
         woff2-font-awesome \
         xdg-desktop-portal-gtk \
         xdg-desktop-portal-hyprland \
+        yt-dlp \
         zerotier-one \
         zoxide
 
