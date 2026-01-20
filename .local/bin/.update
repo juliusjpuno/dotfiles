@@ -34,6 +34,10 @@ git stash pop
 stow --adopt .
 cd "$pwd" || exit
 
+if command -v dconf >/dev/null; then
+    dconf load / <~/.config/dconf/user.ini
+fi
+
 if command -v batcat >/dev/null; then
     alias bat=batcat
 fi
