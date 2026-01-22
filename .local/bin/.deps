@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 # vi: ft=sh
+# WARN: make sure things are sure
+set -euo pipefail
 
 if command -v pacman >/dev/null; then
     if ! command -v paru >/dev/null; then
@@ -35,7 +37,7 @@ if command -v pacman >/dev/null; then
         cups \
         cups-pdf \
         curl \
-        discord \
+        dex \
         duf \
         dysk \
         ethtool \
@@ -70,6 +72,7 @@ if command -v pacman >/dev/null; then
         kooha \
         lazygit \
         libadwaita \
+        libnotify \
         ly \
         man-db \
         mpv \
@@ -106,15 +109,14 @@ if command -v pacman >/dev/null; then
         rustup \
         sbctl \
         slurp \
+        snapshot \
         sof-firmware \
         speedtest-cli \
-        spotify-launcher \
         starship \
         stow \
         swaync \
         swayosd \
         tealdeer \
-        teams-for-linux \
         terminus-font \
         thunderbird \
         tmux \
@@ -144,6 +146,7 @@ if command -v pacman >/dev/null; then
     sudo cp "$DOTROOT/etc/kanata.kbd" /etc/kanata.kbd
     sudo cp "$DOTROOT/etc/ly/config.ini" /etc/ly/config.ini
     sudo cp "$DOTROOT/etc/mkinitcpio.conf" /etc/mkinitcpio.conf
+    sudo cp "$DOTROOT/etc/mkinitcpio.d/linux.preset" /etc/mkinitcpio.d/linux.preset
     sudo cp "$DOTROOT/etc/pacman.conf" /etc/pacman.conf
     sudo cp "$DOTROOT/etc/systemd/logind.conf" /etc/systemd/logind.conf
     sudo cp "$DOTROOT/etc/systemd/sleep.conf" /etc/systemd/sleep.conf
@@ -157,6 +160,7 @@ if command -v pacman >/dev/null; then
     sudo rm /usr/lib/systemd/system-sleep/fprintd-restart 2>/dev/null || true
 
     sudo mkinitcpio -P
+    sudo sync
 
     sudo udevadm control --reload-rules
     sudo udevadm trigger

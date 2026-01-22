@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 # vi: ft=sh
+# WARN: make sure things are sure
+set -euo pipefail
 
 # Where is the DIR for dotfiles?
 dotfiles="$HOME/.files"
@@ -25,9 +27,9 @@ touch "$config/hypr/workspaces.conf"
 [ -d "$dotfiles" ] || git clone https://github.com/mxaddict/dotfiles.git "$dotfiles"
 pwd=$(pwd)
 cd "$dotfiles" || exit
-git stash
+git stash || true
 git pull --no-edit
-git stash pop
+git stash pop || true
 
 [ -f "$HOME/.files/.deps.lock" ] || "$HOME/.files/.local/bin/.deps"
 
@@ -46,13 +48,13 @@ bat cache --build
 tldr --update
 fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish > /tmp/fisher.fish"
 fish -c "source /tmp/fisher.fish && fisher update"
-nvim --headless +TSUpdate "+Lazy! install all" +qa
+nvim --headless "+Lazy! install all" "+Lazy! update all" +TSUpdate +qa
 
 [ -d "$tpm" ] || git clone https://github.com/tmux-plugins/tpm "$tpm"
 cd "$tpm" || exit
 git pull
-tmux source "$config/tmux/tmux.conf"
-"$tpm/bin/install_plugins" 2>/dev/null
-"$tpm/bin/update_plugins" all 2>/dev/null
-"$tpm/bin/clean_plugins" 2>/dev/null
+tmux source "$config/tmux/tmux.conf" 2>/dev/null || true
+"$tpm/bin/install_plugins"
+"$tpm/bin/update_plugins" all
+"$tpm/bin/clean_plugins"
 cd "$pwd" || exit
